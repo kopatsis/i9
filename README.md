@@ -1,50 +1,39 @@
-# i9 Fitness Frontend
+# i9 Fitness
 
-**Website:** [i9fitness.com](https://i9fitness.com)  
-**Status:** Alpha (development currently paused)  
-**Framework:** [SvelteKit](https://kit.svelte.dev/)
+[i9fitness.com](https://i9fitness.com) — A fully dynamic, bodyweight-only training system built for personalized progression, intelligent workout generation, and immersive presentation.
 
-This is the frontend for **i9 Fitness**, a dynamic, bodyweight-only training system. Workouts are generated on demand and performed alongside a real-time 3D animated robot trainer.
+## Overview
 
----
+i9 Fitness generates custom workouts on demand based on length and difficulty, combining curated movement logic with a real-time visual execution system. It blends adaptive training with 3D-animated guidance, providing a focused experience with zero fluff.
 
-## Features
+Each workout includes:
 
-- 🚀 **Workout Generator**: Request fully personalized workouts by difficulty and time.
-- 🏃 **Real-Time Execution**: Follow a 3D robot that performs the entire workout in sync.
-- 🔁 **Structured Routine**:
-  - Dynamic warmup (mobility-focused)
-  - 9 bodyweight workout intervals
-  - Static cooldown stretches
-- 📈 **Feedback System**: Report workout difficulty to influence future recommendations.
-- 📚 **Exercise & Stretch Library**: Browse form guides and workout elements.
-- 📆 **Workout History**: View all completed workouts.
+- **Dynamic warm-up** — Light mobility to prime the body
+- **Main workout** — 9 escalating bodyweight intervals tuned to the user's level
+- **Cooldown** — Static stretches to restore balance post-session
 
----
+The system continuously adapts via user feedback, leveling the user’s account while contributing anonymized insight to global difficulty tuning.
 
-## Project Structure
+## Repos
 
-- **Workout Request & Preview**: Users select difficulty/time and preview robot-rendered script.
-- **Workout Playback**: Robot animates full workout routine based on generated JSON script.
-- **Post-Workout Feedback**: Submitted to backend to tune individual difficulty and global AI.
-- **Navigation**: Full support for browsing workout history and movement library.
+### [Frontend](https://github.com/kopatsis/i9frontend)
+SvelteKit app. Delivers the full user experience: generating and previewing workouts, viewing past sessions, exploring the movement library, and performing workouts alongside a 3D-rendered robot avatar executing every rep in sync.
 
----
+### [Backend](https://github.com/kopatsis/i9-backend)
+Go (Gin) + MongoDB + bbolt. Handles all logic around workout generation, account management, workout history, feedback processing, and system configuration.
 
-## Related Services
+### [Positions Microservice](https://github.com/kopatsis/i9positions)
+Generates frame-accurate motion "scripts" for the robot avatar. Converts the abstract workout into exact timed poses that the frontend uses for real-time rendering. Also handles animation scripts for previews and the exercise library.
 
-This frontend interacts with several backend services in the i9 ecosystem:
+### [Payments Microservice](https://github.com/kopatsis/i9payments)
+Stripe-backed billing layer. Manages membership plans and payments. Go (Gin) + MongoDB + Stripe.
 
-- [`i9-backend`](https://github.com/kopatsis/i9-backend): Workout generation, CRUD, feedback, and admin (Go / Gin / MongoDB / bbolt)
-- [`i9positions`](https://github.com/kopatsis/i9positions): Generates timed movement scripts for 3D robot (Go / Gin / MongoDB / bbolt)
-- [`i9payments`](https://github.com/kopatsis/i9payments): Stripe-backed payment system (Go / Gin / MongoDB)
+## State
+
+The frontend is currently in alpha. Development is paused but will resume shortly.
+
+This repo serves as the canonical index for the i9 system architecture and component ownership.
 
 ---
 
-## Development
-
-```bash
-git clone https://github.com/kopatsis/i9frontend.git
-cd i9frontend
-pnpm install
-pnpm dev
+i9 is built to make bodyweight training intelligent, adaptive, and impossible to outgrow.
